@@ -3,7 +3,8 @@
 #pip install opencv-python
 # avec numpy, Click et tqdm
 
-# le temps d'opération est d'environ 18 secondes pour 1 minute de vidéo à 25fps
+# la vitesse d'opération est d'environ 80-90frames/S
+
 import json
 import numpy
 import cv2
@@ -15,7 +16,7 @@ from scenedetect import SceneManager
 # For content-aware scene detection:
 from scenedetect.detectors import ContentDetector
 
-def find_scenes(video_path, threshold=30.0):
+def find_scenes(video_path, threshold=27):
     # Create our video & scene managers, then add the detector.
     video_manager = VideoManager([video_path])
     scene_manager = SceneManager()
@@ -31,7 +32,7 @@ def find_scenes(video_path, threshold=30.0):
     # Each returned scene is a tuple of the (start, end) timecode.
     return scene_manager
 
-scenes_raw = find_scenes('C:/Users/Simon/Downloads/2021_Budapest_freestyle_dames_50_finale_broadcast.mp4')
+scenes_raw = find_scenes("C:/Users/Simon/Desktop/Stage d'Application/Vidéos/Budapest 2021 EC Women's 100m Freestyle Final.mp4")
 scenes = scenes_raw.get_cut_list()
 
 
